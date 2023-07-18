@@ -12,7 +12,7 @@ URL = 'https://github.com/scikit-garden/scikit-garden'
 MAINTAINER = 'Manoj Kumar'
 MAINTAINER_EMAIL = 'mks542@nyu.edu'
 LICENSE = 'new BSD'
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 
 libraries = []
 if os.name == 'posix':
@@ -46,11 +46,12 @@ class CustomBuildExtCommand(build_ext):
             self.distribution.ext_modules[:] = cythonize(self.distribution.ext_modules, force=self.force)
         super().finalize_options()
 
+
 requirements = [
-    "numpy", 
-    "scipy", 
+    "numpy",
+    "scipy",
     "scikit-learn~=1.1.2", 
-    "cython", 
+    "cython<3.0",
     "six"
     ]
 
@@ -80,5 +81,5 @@ if __name__ == "__main__":
               'Operating System :: MacOS'
             ],
           install_requires=requirements,
-          setup_requires=["Cython>=0.23", "numpy", "setuptools>=18"],
+          setup_requires=["Cython>=0.23,<3.0", "numpy", "setuptools>=18"],
           ext_modules=extensions)
