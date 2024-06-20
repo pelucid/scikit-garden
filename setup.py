@@ -48,7 +48,7 @@ class CustomBuildExtCommand(build_ext):
 
 
 requirements = [
-    "numpy",
+    "numpy<2.0.0",
     "scipy",
     "scikit-learn~=1.1.2", 
     "cython<3.0",
